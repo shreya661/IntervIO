@@ -141,3 +141,12 @@ Run the full automated test suite:
 pytest
 ```
 **Result**: `89 passed, 1 skipped (audio hardware)` across all core subsystems (PDF generator, multi-stack curriculum, AES encryption, scoring, and API robustness).
+
+---
+
+## 👥 Core Team & Contributors
+
+- **Shreya Patha** ([@shreya661](https://github.com/shreya661)) — *Lead Architecture & Fullstack*
+- **Ajay Singh** ([@ajaysingh959934-ctrl](https://github.com/ajaysingh959934-ctrl)) — *Evaluation Engine & Telemetry*
+- **Vandhana** ([@vandhana93](https://github.com/vandhana93)) — *Frontend UI/UX & Assessment Reporting*
+- **Nandini Bingi** ([@nandinibingi02-max](https://github.com/nandinibingi02-max)) — *Testing, Curriculum & Quality Assurance*
