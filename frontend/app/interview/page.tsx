@@ -276,7 +276,7 @@ export default function InterviewPage() {
             {/* AI Engine Badge */}
             <div className="hidden sm:flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-300 font-medium">
               <span>✨</span>
-              <span>Gemini 3.6 Flash Active</span>
+              <span>Gemini 2.0 Flash Active</span>
             </div>
           </div>
 

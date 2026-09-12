@@ -308,7 +308,7 @@ export default function ReportPage() {
               </span>
             )}
             <span className="inline-flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-300">
-              ✨ Gemini 3.6 Flash Evaluator
+              ✨ Gemini 2.0 Flash Evaluator
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400">
               💬 {assessment.questions_answered} Questions Evaluated

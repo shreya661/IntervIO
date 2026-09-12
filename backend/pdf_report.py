@@ -66,7 +66,7 @@ class NumberedCanvas(canvas.Canvas):
         self.setLineWidth(0.5)
         self.line(54, 45, letter[0] - 54, 45)
 
-        footer_text = "Confidential — Evaluated with Gemini 3.6 Flash & AES-256 Fernet Encryption"
+        footer_text = "Confidential — Evaluated with Gemini 2.0 Flash & AES-256 Fernet Encryption"
         self.drawString(54, 32, footer_text)
 
         page_str = f"Page {self._pageNumber} of {total_pages}"

@@ -18,7 +18,7 @@ class GeminiAnswerAnalysis:
 class GeminiAssistant:
     """Use Gemini for text reasoning; voice metrics remain Python-owned."""
 
-    def __init__(self, *, api_key: str | None = None, model: str = "gemini-3.6-flash", client: Any | None = None) -> None:
+    def __init__(self, *, api_key: str | None = None, model: str = "gemini-2.0-flash", client: Any | None = None) -> None:
         self.api_key = api_key or os.getenv("GEMINI_API_KEY")
         self.model = model
         self._client = client
@@ -46,7 +46,15 @@ class GeminiAssistant:
         raw = getattr(response, "text", None)
         if not isinstance(raw, str):
             raise ValueError("Gemini returned no text")
-        value = json.loads(raw)
+        cleaned = raw.strip()
+        if cleaned.startswith("```json"):
+            cleaned = cleaned[7:]
+        elif cleaned.startswith("```"):
+            cleaned = cleaned[3:]
+        if cleaned.endswith("```"):
+            cleaned = cleaned[:-3]
+        cleaned = cleaned.strip()
+        value = json.loads(cleaned)
         if not isinstance(value, dict):
             raise ValueError("Gemini response was not an object")
         return value

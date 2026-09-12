@@ -234,7 +234,7 @@ export default function Home() {
             <div className="mt-6 flex items-center gap-2.5 rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-xs text-slate-400">
               <span className="text-base">✨</span>
               <span>
-                <strong className="text-slate-200">Google Gemini 3.6 Flash</strong> connected. Evaluates candidate depth and adjusts questions dynamically.
+                <strong className="text-slate-200">Google Gemini 2.0 Flash</strong> connected. Evaluates candidate depth and adjusts questions dynamically.
               </span>
             </div>
           </div>
@@ -504,7 +504,7 @@ export default function Home() {
                 {showKeyInput && (
                   <div className="mt-2 rounded-xl border border-slate-800 bg-slate-950/80 p-3">
                     <p className="text-[11px] text-slate-400 mb-2">
-                      The server is pre-configured with Gemini 3.6 Flash. Enter a custom key only if you wish to override:
+                      The server is pre-configured with Gemini 2.0 Flash. Enter a custom key only if you wish to override:
                     </p>
                     <input
                       type="password"

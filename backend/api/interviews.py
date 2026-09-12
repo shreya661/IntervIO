@@ -12,6 +12,7 @@ Features:
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 import sys
@@ -112,6 +113,17 @@ from pydantic import BaseModel
 class AnswerRequest(BaseModel):
     answer: str
     visual_signal: Optional[VisualSignal] = None  # Optional camera observations from client
+
+
+class CreateInterviewRequest(BaseModel):
+    candidate_name: Optional[str] = None
+    goal: Optional[str] = "Full Evaluation"
+    duration_minutes: Optional[int] = 30
+    company_name: Optional[str] = None
+    company_needs: Optional[str] = None
+    job_title: Optional[str] = None
+    job_description: Optional[str] = None
+    gemini_api_key: Optional[str] = None
 
 
 # ── In-memory store ───────────────────────────────────────────────────────────
@@ -533,7 +545,7 @@ def _generate_interview_plan(state: InterviewState) -> InterviewPlan:
         api_key = state.gemini_api_key or os.getenv("GEMINI_API_KEY")
         if api_key and GeminiAssistant:
             try:
-                assistant = GeminiAssistant(api_key=api_key, model="gemini-3.6-flash")
+                assistant = GeminiAssistant(api_key=api_key, model="gemini-2.0-flash")
                 prompt = (
                     f"Create a concise 2-sentence interview plan summary for candidate {state.candidate_name}.\n"
                     f"ROLE: {role}. STACK: {', '.join(detected_stack)}. "
@@ -647,7 +659,7 @@ def select_next_question(
         try:
             api_key = state.gemini_api_key or os.getenv("GEMINI_API_KEY")
             if GeminiAssistant and api_key:
-                assistant = GeminiAssistant(api_key=api_key, model="gemini-3.6-flash")
+                assistant = GeminiAssistant(api_key=api_key, model="gemini-2.0-flash")
                 resume_dict = state.resume_profile.model_dump() if state.resume_profile else None
                 if resume_dict:
                     clean_resume = {}
@@ -751,7 +763,7 @@ def select_next_question(
 
 @router.post("/")
 def create_interview(
-    candidate_name: str,
+    candidate_name: Optional[str] = None,
     goal: str = "Full Evaluation",
     duration_minutes: int = 30,
     company_name: Optional[str] = None,
@@ -759,8 +771,22 @@ def create_interview(
     job_title: Optional[str] = None,
     job_description: Optional[str] = None,
     gemini_api_key: Optional[str] = None,
+    body: Optional[CreateInterviewRequest] = None,
 ):
     """Create an empty interview session. Resume must be uploaded before starting."""
+    if body:
+        candidate_name = body.candidate_name or candidate_name
+        goal = body.goal or goal
+        duration_minutes = body.duration_minutes if body.duration_minutes is not None else duration_minutes
+        company_name = body.company_name or company_name
+        company_needs = body.company_needs or company_needs
+        job_title = body.job_title or job_title
+        job_description = body.job_description or job_description
+        gemini_api_key = body.gemini_api_key or gemini_api_key
+
+    if not candidate_name or not candidate_name.strip():
+        raise HTTPException(status_code=422, detail="candidate_name is required")
+
     interview_id = str(uuid.uuid4())
 
     # Encrypt PII at rest
@@ -979,7 +1005,7 @@ def start_interview(interview_id: str):
         try:
             api_key = state.gemini_api_key or os.getenv("GEMINI_API_KEY")
             if GeminiAssistant and api_key:
-                assistant = GeminiAssistant(api_key=api_key, model="gemini-3.6-flash")
+                assistant = GeminiAssistant(api_key=api_key, model="gemini-2.0-flash")
                 resume_dict = state.resume_profile.model_dump() if state.resume_profile else None
                 ai_q = assistant.generate_curriculum_question(
                     question_number=1,
@@ -1329,7 +1355,7 @@ def get_assessment(interview_id: str):
         api_key = state.gemini_api_key or os.getenv("GEMINI_API_KEY")
         if api_key:
             try:
-                assistant = GeminiAssistant(api_key=api_key, model="gemini-3.6-flash")
+                assistant = GeminiAssistant(api_key=api_key, model="gemini-2.0-flash")
                 qa_data = [
                     {"question": a.question, "answer": a.answer, "skill": a.skill or "", "depth": a.depth or ""}
                     for a in state.answers
@@ -1491,6 +1517,14 @@ def end_interview(interview_id: str):
         raise HTTPException(status_code=404, detail="Interview not found")
 
     state = interviews[interview_id]
+
+    if state.status == "completed":
+        return {
+            "message": "Interview completed successfully",
+            "interview_id": interview_id,
+            "status": state.status,
+            "questions_answered": len(state.answers),
+        }
 
     if state.status not in ("in_progress", "created"):
         raise HTTPException(status_code=400, detail="Interview is not in progress")
