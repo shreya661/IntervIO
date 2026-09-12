@@ -250,7 +250,7 @@ export default function ReportPage() {
               <img
                 src="/logo.png"
                 alt="InterviewOne AI Logo"
-                className="h-14 w-14 rounded-2xl border border-slate-700/80 shadow-lg object-cover"
+                className="h-16 w-16 object-contain drop-shadow-lg"
               />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-blue-400">InterviewOne AI Assessment</p>

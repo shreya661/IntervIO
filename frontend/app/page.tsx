@@ -164,7 +164,7 @@ export default function Home() {
               <img
                 src="/logo.png"
                 alt="InterviewOne AI Logo"
-                className="h-14 w-14 rounded-2xl border border-slate-700/80 shadow-lg shadow-indigo-500/10 object-cover"
+                className="h-16 w-16 drop-shadow-xl object-contain hover:scale-105 transition-transform"
               />
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-300">

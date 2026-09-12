@@ -264,7 +264,7 @@ export default function InterviewPage() {
             <img
               src="/logo.png"
               alt="InterviewOne AI Logo"
-              className="h-9 w-9 rounded-xl border border-slate-700/80 shadow-md object-cover"
+              className="h-10 w-10 object-contain drop-shadow"
             />
             <div>
               <h1 className="text-lg font-bold leading-tight">
