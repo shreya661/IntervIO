@@ -160,14 +160,22 @@ export default function Home() {
 
           {/* ── Left Column: Platform Overview & 3-Stage Curriculum ── */}
           <div className="flex flex-col justify-center lg:col-span-5">
-            <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold text-blue-300">
-              <span className="h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
-              Agentic HR & Talent Partner Interviewer
+            <div className="mb-6 flex items-center gap-3.5">
+              <img
+                src="/logo.png"
+                alt="InterviewOne AI Logo"
+                className="h-14 w-14 rounded-2xl border border-slate-700/80 shadow-lg shadow-indigo-500/10 object-cover"
+              />
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+                  Agentic Talent Partner
+                </div>
+                <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1">
+                  InterviewOne <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">AI</span>
+                </h1>
+              </div>
             </div>
-
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-              InterviewOne <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">AI HR</span>
-            </h1>
 
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-300">
               An intelligent Agentic HR Interviewer that reviews your resume and conducts an authentic, structured talent screening. Starts with a warm candidate introduction, explores your key resume skills, assesses behavioral & culture fit (STAR method), and generates an official HR Candidate Grading Scorecard.

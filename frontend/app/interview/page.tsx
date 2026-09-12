@@ -261,9 +261,14 @@ export default function InterviewPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
 
           <div className="flex items-center gap-4">
+            <img
+              src="/logo.png"
+              alt="InterviewOne AI Logo"
+              className="h-9 w-9 rounded-xl border border-slate-700/80 shadow-md object-cover"
+            />
             <div>
-              <h1 className="text-lg font-bold">
-                InterviewOne <span className="text-blue-400">AI</span>
+              <h1 className="text-lg font-bold leading-tight">
+                InterviewOne <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">AI</span>
               </h1>
               <p className="text-xs text-slate-400 flex items-center gap-1.5">
                 <span>{interview.interview_plan?.role_title || interview.job_title || "Software Engineer"}</span>

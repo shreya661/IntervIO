@@ -246,22 +246,29 @@ export default function ReportPage() {
         {/* Top Header Card */}
         <div className="mb-8 rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-2xl">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-blue-400">InterviewOne AI Assessment</p>
-              <h1 className="mt-1 text-3xl font-extrabold text-white">
-                Technical Evaluation Report
-              </h1>
-              <p className="mt-2 text-base text-slate-300">
-                Candidate: <strong className="text-white">{assessment.candidate_name}</strong>
-                <span className="mx-2 text-slate-600">•</span>
-                Role: <strong className="text-blue-300">{roleTitle}</strong>
-                {assessment.company_name && (
-                  <>
-                    <span className="mx-2 text-slate-600">•</span>
-                    Target: <strong className="text-purple-300">{assessment.company_name}</strong>
-                  </>
-                )}
-              </p>
+            <div className="flex items-center gap-4">
+              <img
+                src="/logo.png"
+                alt="InterviewOne AI Logo"
+                className="h-14 w-14 rounded-2xl border border-slate-700/80 shadow-lg object-cover"
+              />
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-blue-400">InterviewOne AI Assessment</p>
+                <h1 className="mt-0.5 text-3xl font-extrabold text-white">
+                  Technical Evaluation Report
+                </h1>
+                <p className="mt-1 text-sm text-slate-300">
+                  Candidate: <strong className="text-white">{assessment.candidate_name}</strong>
+                  <span className="mx-2 text-slate-600">•</span>
+                  Role: <strong className="text-blue-300">{roleTitle}</strong>
+                  {assessment.company_name && (
+                    <>
+                      <span className="mx-2 text-slate-600">•</span>
+                      Target: <strong className="text-purple-300">{assessment.company_name}</strong>
+                    </>
+                  )}
+                </p>
+              </div>
             </div>
 
             <div className="flex items-center gap-2.5">

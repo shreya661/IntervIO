@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import io
 from datetime import datetime
+from pathlib import Path
 from typing import Any, List, Optional
 
 from reportlab.lib import colors
@@ -18,6 +19,7 @@ from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
 from reportlab.platypus import (
     HRFlowable,
+    Image as RLImage,
     KeepTogether,
     Paragraph,
     SimpleDocTemplate,
@@ -189,36 +191,46 @@ def generate_assessment_pdf(assessment_data: dict) -> bytes:
     date_str = datetime.now().strftime("%B %d, %Y")
 
     # ── 1. Document Header Banner ─────────────────────────────────────────────
-    header_table_data = [
-        [
-            Paragraph(
-                f"""<b>INTERVIEWONE AI</b> • TECHNICAL EVALUATION REPORT<br/>
+    logo_path = Path(__file__).resolve().parent / "logo.png"
+    if not logo_path.exists():
+        logo_path = Path(__file__).resolve().parent.parent / "frontend" / "public" / "logo.png"
+
+    info_p = Paragraph(
+        f"""<b>INTERVIEWONE AI</b> • TECHNICAL EVALUATION REPORT<br/>
 <font size="16"><b>{candidate_name}</b></font><br/>
 <font color="#475569">Target Role: <b>{role_title}</b>{f' • Company: <b>{company_name}</b>' if company_name else ''}</font><br/>
 <font color="#64748B" size="8">Assessment Date: {date_str} • Questions Evaluated: {questions_answered}</font>""",
-                body_text,
-            ),
-            Paragraph(
-                f"""<div align="right">
+        body_text,
+    )
+    score_p = Paragraph(
+        f"""<div align="right">
 <font size="8" color="#64748B">OVERALL SCORE</font><br/>
 <font size="24" color="#2563EB"><b>{overall_score:.1f}</b></font><font size="12" color="#64748B">/10</font><br/>
 <font size="8" color="#059669"><b>{recommendation}</b></font>
 </div>""",
-                body_text,
-            ),
-        ]
-    ]
+        body_text,
+    )
 
-    header_table = Table(header_table_data, colWidths=[content_width * 0.70, content_width * 0.30])
+    if logo_path.exists():
+        logo_img = RLImage(str(logo_path), width=46, height=46)
+        header_table_data = [[logo_img, info_p, score_p]]
+        score_w = content_width * 0.28
+        logo_w = 54
+        info_w = content_width - logo_w - score_w
+        header_table = Table(header_table_data, colWidths=[logo_w, info_w, score_w])
+    else:
+        header_table_data = [[info_p, score_p]]
+        header_table = Table(header_table_data, colWidths=[content_width * 0.70, content_width * 0.30])
+
     header_table.setStyle(
         TableStyle([
             ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
             ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#F8FAFC")),
             ("BOX", (0, 0), (-1, -1), 1, colors.HexColor("#E2E8F0")),
-            ("TOPPADDING", (0, 0), (-1, -1), 12),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 12),
-            ("LEFTPADDING", (0, 0), (-1, -1), 14),
-            ("RIGHTPADDING", (0, 0), (-1, -1), 14),
+            ("TOPPADDING", (0, 0), (-1, -1), 10),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
+            ("LEFTPADDING", (0, 0), (-1, -1), 12),
+            ("RIGHTPADDING", (0, 0), (-1, -1), 12),
         ])
     )
     story.append(header_table)
