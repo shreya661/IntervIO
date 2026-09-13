@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { API_BASE } from "@/lib/api";
 
 interface Score {
   skill: string;
@@ -108,7 +109,7 @@ export default function ReportPage() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/interviews/${assessment.interview_id}/assessment/pdf`
+        `${API_BASE}/interviews/${assessment.interview_id}/assessment/pdf`
       );
 
       if (!response.ok) {
@@ -150,7 +151,7 @@ export default function ReportPage() {
         const interview = JSON.parse(storedInterview);
 
         const response = await fetch(
-          `http://127.0.0.1:8000/interviews/${interview.interview_id}/assessment`
+          `${API_BASE}/interviews/${interview.interview_id}/assessment`
         );
 
         if (!response.ok) {

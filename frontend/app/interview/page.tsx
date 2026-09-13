@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import AgentTrace from "../../components/AgentTrace";
 import CameraPanel, { type VisualSignalCapture } from "../../components/CameraPanel";
 import VoiceInput from "../../components/VoiceInput";
+import { API_BASE } from "@/lib/api";
 
 interface AnswerRecord {
   question: string;
@@ -100,7 +101,7 @@ export default function InterviewPage() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/interviews/${iv.interview_id}/end`,
+        `${API_BASE}/interviews/${iv.interview_id}/end`,
         { method: "POST" }
       );
 
@@ -174,7 +175,7 @@ export default function InterviewPage() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/interviews/${interview.interview_id}/answer`,
+        `${API_BASE}/interviews/${interview.interview_id}/answer`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

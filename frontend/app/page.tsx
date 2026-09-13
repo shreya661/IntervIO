@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { API_BASE } from "@/lib/api";
 
 type UploadStep =
   | "idle"
@@ -75,7 +76,7 @@ export default function Home() {
       if (jobTitle.trim()) params.append("job_title", jobTitle.trim());
       if (geminiApiKey.trim()) params.append("gemini_api_key", geminiApiKey.trim());
 
-      const createRes = await fetch(`http://127.0.0.1:8000/interviews/?${params.toString()}`, {
+      const createRes = await fetch(`${API_BASE}/interviews/?${params.toString()}`, {
         method: "POST",
       });
 
@@ -91,7 +92,7 @@ export default function Home() {
       resumeFormData.append("file", resumeFile);
 
       const resumeRes = await fetch(
-        `http://127.0.0.1:8000/interviews/${interviewId}/resume`,
+        `${API_BASE}/interviews/${interviewId}/resume`,
         { method: "POST", body: resumeFormData }
       );
 
@@ -119,7 +120,7 @@ export default function Home() {
         if (companyName.trim()) jdFormData.append("company_name", companyName.trim());
         if (companyNeeds.trim()) jdFormData.append("company_needs", companyNeeds.trim());
 
-        await fetch(`http://127.0.0.1:8000/interviews/${interviewId}/job-description`, {
+        await fetch(`${API_BASE}/interviews/${interviewId}/job-description`, {
           method: "POST",
           body: jdFormData,
         }).catch((e) => console.warn("Job description attachment notice:", e));
@@ -131,7 +132,7 @@ export default function Home() {
 
       setStep("starting");
       const startRes = await fetch(
-        `http://127.0.0.1:8000/interviews/${interviewId}/start`,
+        `${API_BASE}/interviews/${interviewId}/start`,
         { method: "POST" }
       );
 

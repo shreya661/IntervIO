@@ -845,6 +845,10 @@ async def upload_job_description(
         elif suffix == ".pdf":
             try:
                 import io
+                # pypdf is a declared dependency (requirements.txt) but is an OPTIONAL
+                # runtime feature: import it lazily so a missing install only disables
+                # PDF extraction (gracefully handled by the except below), never startup.
+                # pyrefly: ignore[missing-import]
                 from pypdf import PdfReader
                 reader = PdfReader(io.BytesIO(content))
                 extracted = "\n".join(p.extract_text() or "" for p in reader.pages)

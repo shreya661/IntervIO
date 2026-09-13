@@ -61,6 +61,9 @@ class ResumeAnalyzer:
     @staticmethod
     def _pdf_text(path: Path) -> str:
         try:
+            # pypdf is a declared dependency (requirements.txt) but is an OPTIONAL
+            # runtime feature; failure is surfaced as ResumeAnalysisError below.
+            # pyrefly: ignore[missing-import]
             from pypdf import PdfReader
             return "\n".join(page.extract_text() or "" for page in PdfReader(str(path)).pages)
         except Exception as exc:
