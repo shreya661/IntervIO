@@ -4,6 +4,10 @@ The package keeps audio processing, visual observations, personal baselines,
 fusion, and candidate support as separate layers so each can be tested or
 replaced independently.
 """
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6c367e4ed213302f79d78ca86b61c661a65824f4
 from .speech_to_text import SpeechToText
 from .live_voice import LiveVoiceProcessor, LiveVoiceResult, VoiceTurnStatus
 from .visual_analyzer import VisualAnalyzer, VisualObservation
