@@ -193,7 +193,7 @@ pytest
 
 | Name | GitHub | Role |
 |:---|:---|:---|
-| **Shreya Patha** | [@shreya661](https://github.com/shreya661) | Lead Architecture & Fullstack |
+| **Shreya Patha** | [@shreya661](https://github.com/shreya661) | Architecture & Fullstack |
 | **Ajay Singh** | [@ajaysingh959934-ctrl](https://github.com/ajaysingh959934-ctrl) | Evaluation Engine & Telemetry |
 | **Vandhana** | [@vandhana93](https://github.com/vandhana93) | Frontend UI/UX & Assessment Reporting |
 | **Nandini Bingi** | [@nandinibingi02-max](https://github.com/nandinibingi02-max) | Testing, Curriculum & Quality Assurance |
