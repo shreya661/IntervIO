@@ -8,7 +8,7 @@ Thank you for contributing to **IntervIO** — the Autonomous Multimodal Adaptiv
 
 | Contributor | GitHub Handle | Role |
 | :--- | :--- | :--- |
-| **Shreya Patha** (Lead) | [@shreya661](https://github.com/shreya661) | Core Architecture, Backend & Fullstack |
+| **Shreya Patha**  | [@shreya661](https://github.com/shreya661) | Core Architecture, Backend & Fullstack |
 | **Ajay Singh** | [@ajaysingh959934-ctrl](https://github.com/ajaysingh959934-ctrl) | Evaluation Engine & Telemetry |
 | **Vandhana** | [@vandhana93](https://github.com/vandhana93) | Frontend UI/UX & Assessment Reporting |
 | **Nandini Bingi** | [@nandinibingi02-max](https://github.com/nandinibingi02-max) | Testing, Curriculum & Quality Assurance |
