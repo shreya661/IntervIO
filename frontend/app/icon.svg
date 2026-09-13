@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Brand Gradients -->
+    <linearGradient id="io-grad-primary" x1="10%" y1="10%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+
+    <linearGradient id="io-grad-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+
+    <linearGradient id="io-bg-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95" />
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Obsidian Container Squircle -->
+  <rect x="4" y="4" width="112" height="112" rx="28" fill="url(#io-bg-glow)" stroke="#334155" stroke-width="1.5" />
+  
+  <!-- Subtle Ambient Glow -->
+  <circle cx="60" cy="60" r="32" fill="#6366F1" opacity="0.12" filter="blur(16px)" />
+
+  <!-- The "InterviewOne" Minimalist Mark: Dynamic Voice Wave + Numeral '1' -->
+  <g>
+    <!-- Left Voice Wave Bar (Intro/Question) -->
+    <rect x="28" y="50" width="6" height="20" rx="3" fill="url(#io-grad-accent)" opacity="0.85" />
+    <rect x="38" y="40" width="6" height="40" rx="3" fill="url(#io-grad-primary)" />
+
+    <!-- Center Hero Numeral "1" (The 'One' in InterviewOne) -->
+    <!-- Serif Hook -->
+    <path d="M 52 44 L 62 36 L 62 84" stroke="url(#io-grad-primary)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Solid Base Foot -->
+    <line x1="52" y1="84" x2="72" y2="84" stroke="url(#io-grad-primary)" stroke-width="7.5" stroke-linecap="round" />
+
+    <!-- Right Voice Wave Bar (Candidate Answer / Evaluation) -->
+    <rect x="76" y="40" width="6" height="40" rx="3" fill="url(#io-grad-primary)" />
+    <rect x="86" y="50" width="6" height="20" rx="3" fill="url(#io-grad-primary)" opacity="0.85" />
+
+    <!-- AI Intelligence Beacon (Gemini Intelligence Node) -->
+    <circle cx="62" cy="24" r="3.5" fill="#38BDF8" />
+  </g>
+</svg>

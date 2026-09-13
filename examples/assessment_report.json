@@ -1,0 +1,186 @@
+{
+  "interview_id": "int_hackathon_demo_01",
+  "candidate_name": "Alex Chen",
+  "job_title": "Senior Backend Systems Engineer",
+  "overall_recommendation": "Lean Hire",
+  "overall_score": 3.33,
+  "overall_confidence": 0.28,
+  "summary_rationale": "Candidate completed evaluation across 2 technical competencies with an overall weighted score of 3.33/5 and confidence 0.28.",
+  "competency_breakdown": {
+    "System Design": {
+      "competency": "System Design",
+      "priority": 5.0,
+      "score": 3.14,
+      "confidence": 0.28,
+      "status": "evidence_gap",
+      "evidence_list": [
+        {
+          "id": "ev_claim_claim_543207",
+          "competency": "System Design",
+          "demonstrated_fact": "Verified candidate direct contribution to: I designed the entire backend architecture myself from scrat",
+          "quote": "I personally chose Redis Pub/Sub combined with Celery workers to decouple the HTTP ingestion layer. ",
+          "depth_level": "intermediate",
+          "confidence_score": 0.85,
+          "turn_index": 2,
+          "timestamp": "2026-09-07T17:03:18.521070+00:00"
+        },
+        {
+          "id": "ev_e74e82",
+          "competency": "System Design",
+          "demonstrated_fact": "Candidate articulated technical concepts for System Design",
+          "quote": "I personally chose Redis Pub/Sub combined with Celery workers to decouple the HTTP ingestion layer",
+          "depth_level": "intermediate",
+          "confidence_score": 0.75,
+          "turn_index": 2,
+          "timestamp": "2026-09-07T17:03:18.521722+00:00"
+        }
+      ],
+      "claims_pending": [
+        {
+          "claim_id": "claim_543207",
+          "claim_text": "I designed the entire backend architecture myself from scratch for the enterprise",
+          "target_competency": "System Design",
+          "verification_needed": true,
+          "verification_question": "You mentioned designing that architecture. Which specific architectural decision or trade-off did you personally make, and what alternative design did you reject?",
+          "verified": true,
+          "verification_response": "I personally chose Redis Pub/Sub combined with Celery workers to decouple the HTTP ingestion layer. I also added Redis read-replicas and sharded the keys by tenant_id to prevent write bottlenecks.",
+          "timestamp": "2026-09-07T17:03:18.520620+00:00"
+        }
+      ],
+      "missing_evidence": [
+        "Horizontal scaling",
+        "Database bottleneck strategy",
+        "Caching architecture",
+        "Disaster recovery"
+      ]
+    },
+    "Python": {
+      "competency": "Python",
+      "priority": 4.5,
+      "score": 3.55,
+      "confidence": 0.29,
+      "status": "evidence_gap",
+      "evidence_list": [
+        {
+          "id": "ev_7145b6",
+          "competency": "Python",
+          "demonstrated_fact": "Candidate articulated technical concepts for Python",
+          "quote": "The GIL ensures only one native thread executes Python bytecode at a time",
+          "depth_level": "intermediate",
+          "confidence_score": 0.75,
+          "turn_index": 4,
+          "timestamp": "2026-09-07T17:03:18.522058+00:00"
+        }
+      ],
+      "claims_pending": [],
+      "missing_evidence": [
+        "Asyncio / Event Loop",
+        "Memory management & GIL",
+        "Generators & Iterators"
+      ]
+    },
+    "Database & SQL": {
+      "competency": "Database & SQL",
+      "priority": 4.0,
+      "score": 0.0,
+      "confidence": 0.0,
+      "status": "untested",
+      "evidence_list": [],
+      "claims_pending": [],
+      "missing_evidence": [
+        "Index optimization",
+        "ACID transactions & isolation levels",
+        "Query execution plans"
+      ]
+    },
+    "Debugging & Troubleshooting": {
+      "competency": "Debugging & Troubleshooting",
+      "priority": 4.0,
+      "score": 0.0,
+      "confidence": 0.0,
+      "status": "untested",
+      "evidence_list": [],
+      "claims_pending": [],
+      "missing_evidence": [
+        "Root cause analysis methodology",
+        "Distributed tracing",
+        "Race condition diagnosis"
+      ]
+    },
+    "Communication & Ownership": {
+      "competency": "Communication & Ownership",
+      "priority": 3.5,
+      "score": 0.0,
+      "confidence": 0.0,
+      "status": "untested",
+      "evidence_list": [],
+      "claims_pending": [],
+      "missing_evidence": [
+        "Technical articulation",
+        "Trade-off justification",
+        "Handling conflicting requirements"
+      ]
+    }
+  },
+  "verified_claims_count": 1,
+  "unverified_claims_count": 0,
+  "contradictions_found": [
+    {
+      "id": "contra_b0bffc",
+      "source_a": "Resume mentions experience with 'kubernetes'",
+      "source_b": "never worked with kubernetes",
+      "description": "Candidate stated 'never worked with kubernetes', which contradicts their resume claiming 'kubernetes'.",
+      "severity": "High",
+      "clarification_question": "Your resume mentions experience with kubernetes, but you mentioned 'never worked with kubernetes'. Could you clarify the extent of your hands-on involvement with kubernetes?",
+      "resolved": false
+    }
+  ],
+  "key_strengths": [
+    "Foundational technical awareness"
+  ],
+  "critical_gaps": [
+    "Evidence gap in System Design: missing Horizontal scaling, Database bottleneck strategy",
+    "Evidence gap in Python: missing Asyncio / Event Loop, Memory management & GIL",
+    "Evidence gap in Database & SQL: missing Index optimization, ACID transactions & isolation levels",
+    "Evidence gap in Debugging & Troubleshooting: missing Root cause analysis methodology, Distributed tracing",
+    "Evidence gap in Communication & Ownership: missing Technical articulation, Trade-off justification"
+  ],
+  "unsupported_score_prevention_applied": false,
+  "audit_trail": [
+    {
+      "turn": 1,
+      "competency": "System Design",
+      "action": "VERIFY_CLAIM",
+      "reason": "Candidate made an unverified claim: 'I designed the entire backend architecture myself from scrat'. Need to verify direct ownership.",
+      "evidence_count": 0
+    },
+    {
+      "turn": 2,
+      "competency": "System Design",
+      "action": "PROBE_DEEPER",
+      "reason": "Answer demonstrated solid knowledge. Probe deeper technical scenario.",
+      "evidence_count": 1
+    },
+    {
+      "turn": 3,
+      "competency": "Debugging & Troubleshooting",
+      "action": "PROBE_VAGUE",
+      "reason": "Answer was vague (Answer is very brief and lacks technical elaboration.). Request concrete implementation details.",
+      "evidence_count": 0
+    },
+    {
+      "turn": 4,
+      "competency": "Python",
+      "action": "PROBE_DEEPER",
+      "reason": "Answer demonstrated solid knowledge. Probe deeper technical scenario.",
+      "evidence_count": 1
+    },
+    {
+      "turn": 5,
+      "competency": "System Design",
+      "action": "VERIFY_CONTRADICTION",
+      "reason": "Contradiction detected (High severity): Candidate stated 'never worked with kubernetes', which contradicts their resume claiming 'kubernetes'.",
+      "evidence_count": 0
+    }
+  ]
+}
